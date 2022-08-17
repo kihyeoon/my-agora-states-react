@@ -1,30 +1,45 @@
-import React from "react";
+const Discussion = ({ discussion, deleteDiscussion, updateDiscussion }) => {
+  const { id, url, author, avatarUrl, title, createdAt, answer } = discussion;
 
-const Discussion = ({ item }) => {
-  let date = new Date(item.createdAt);
+  let date = new Date(createdAt);
+
+  const handleUpdate = () => {
+    const newAuthor = prompt("Update Author");
+    const newTitle = prompt("Update Title");
+    const newBody = prompt("Update Body");
+    const author = newAuthor;
+    const title = newTitle;
+    const bodyText = newBody;
+    updateDiscussion({ author, title, bodyText, id });
+  };
+
   return (
-    <li key={item.id} className="discussion__container">
+    <li className="discussion__container">
       <div className="discussion__avatar--wrapper">
         <img
           className="discussion__avatar--image"
-          src={item.avatarUrl}
-          alt={"avatar of " + item.author}
+          src={avatarUrl}
+          alt={"avatar of " + author}
         />
       </div>
       <div className="discussion__content">
         <h3 className="discussion__title">
-          <a href={item.url}>{item.title}</a>
+          <a href={url}>{title}</a>
         </h3>
         <div className="discussion__information">
-          {`${item.author} / ${
+          {`${author} / ${
             date.getMonth() + 1
           }월 ${date.getDate()}일 ${date.toLocaleTimeString()}`}
         </div>
       </div>
       <div className="discussion__answered">
-        <button className="delete button">x</button>
-        <button className="delete button">✏️</button>
-        <p>{item.answer === null ? "😵" : "✓"}</p>
+        <button className="delete__button" onClick={() => deleteDiscussion(id)}>
+          x
+        </button>
+        <button className="update__button" onClick={handleUpdate}>
+          ✏️
+        </button>
+        <p>{answer === null ? "😵" : "✓"}</p>
       </div>
     </li>
   );

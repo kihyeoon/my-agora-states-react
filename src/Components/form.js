@@ -1,9 +1,15 @@
-import React from "react";
+const Form = ({ addDiscussion }) => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const author = event.target[0].value;
+    const title = event.target[1].value;
+    const bodyText = event.target[2].value;
+    addDiscussion({ author, title, bodyText });
+  };
 
-const Form = () => {
   return (
     <section className="form__container">
-      <form action method="get" className="form">
+      <form action method="get" className="form" onSubmit={handleSubmit}>
         <div className="form__input--wrapper">
           <div className="form__input--name">
             <label htmlFor="name">Enter your name: </label>

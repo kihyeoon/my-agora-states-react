@@ -1,22 +1,11 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
-// import agoraStatesDiscussions from "../static/data";
-import Discussion from "./discussion";
+import Discussion from "./Discussion";
 
-const Discussions = () => {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const json = await (
-        await fetch("http://localhost:4000/discussions")
-      ).json();
-      setData(json);
-      setLoading(false);
-    })();
-  }, []);
-
+const Discussions = ({
+  discussions,
+  loading,
+  deleteDiscussion,
+  updateDiscussion,
+}) => {
   return (
     <section className="discussion__wrapper">
       <div className="pagination">
@@ -29,8 +18,15 @@ const Discussions = () => {
         <h1>Loading...</h1>
       ) : (
         <ul className="discussions__container">
-          {data.map((item) => {
-            return <Discussion item={item} key={item.id} />;
+          {discussions.map((discussion) => {
+            return (
+              <Discussion
+                key={discussion.id}
+                discussion={discussion}
+                deleteDiscussion={deleteDiscussion}
+                updateDiscussion={updateDiscussion}
+              />
+            );
           })}
         </ul>
       )}
