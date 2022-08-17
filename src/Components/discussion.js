@@ -1,6 +1,6 @@
 import React from "react";
 
-const Discussion = (item) => {
+const Discussion = ({ item }) => {
   let date = new Date(item.createdAt);
   return (
     <li key={item.id} className="discussion__container">

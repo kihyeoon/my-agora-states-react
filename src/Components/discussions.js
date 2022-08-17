@@ -10,13 +10,10 @@ const Discussions = () => {
   useEffect(() => {
     (async () => {
       const json = await (
-        await fetch("http://localhost:4000/discussions/")
+        await fetch("http://localhost:4000/discussions")
       ).json();
-      console.log(json);
       setData(json);
-      console.log(data);
       setLoading(false);
-      console.log(loading);
     })();
   }, []);
 
