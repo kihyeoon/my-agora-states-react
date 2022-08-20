@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/my-agora-states-react/static/css/main.137ff767.css",
+    "main.js": "/my-agora-states-react/static/js/main.0a64a58a.js",
+    "index.html": "/my-agora-states-react/index.html",
+    "main.137ff767.css.map": "/my-agora-states-react/static/css/main.137ff767.css.map",
+    "main.0a64a58a.js.map": "/my-agora-states-react/static/js/main.0a64a58a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.137ff767.css",
+    "static/js/main.0a64a58a.js"
+  ]
+}
